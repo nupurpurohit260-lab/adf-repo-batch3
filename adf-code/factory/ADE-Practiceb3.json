@@ -1,0 +1,15 @@
+{
+	"name": "ADE-Practiceb3",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "737bdd47-bfe2-4999-99e5-bf2a5e2992bd",
+		"tenantId": "69aea903-0dc1-480c-8754-a5641b80a008"
+	}
+}

@@ -1,0 +1,49 @@
+{
+	"name": "4_PL_PROD_Ready",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute_CopyFile",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CopyCSV_File",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ExecuteOnlySales",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute_CopyFile",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "3_OnlySalesFileCopy",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-06-09T11:07:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
