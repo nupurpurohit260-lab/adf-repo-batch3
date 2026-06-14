@@ -1,9 +1,9 @@
 {
-	"name": "1_PL_CopyCSV_File",
+	"name": "5_PL_External_S3_File_Transfer",
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyFile",
+				"name": "CopyFileFromS3",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -18,7 +18,7 @@
 					"source": {
 						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
+							"type": "AmazonS3ReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
@@ -49,28 +49,21 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_DL_CSV",
+						"referenceName": "DS_AWS_S3_File",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_DL_Sink_CSV",
+						"referenceName": "DS_DL_S3File",
 						"type": "DatasetReference"
 					}
 				]
 			},
 			{
-				"name": "DeleteFile",
-				"type": "Delete",
-				"dependsOn": [
-					{
-						"activity": "CopyFile",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"name": "S3DataTransformationS3",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -80,27 +73,18 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "ds_deletefile",
-						"type": "DatasetReference"
+					"dataflow": {
+						"referenceName": "dataflow1",
+						"type": "DataFlowReference"
 					},
-					"logStorageSettings": {
-						"linkedServiceName": {
-							"referenceName": "LS_DL",
-							"type": "LinkedServiceReference"
-						}
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
 					},
-					"enableLogging": true,
-					"storeSettings": {
-						"type": "AzureBlobFSReadSettings",
-						"recursive": true,
-						"enablePartitionDiscovery": false
-					}
+					"traceLevel": "Fine"
 				}
 			}
 		],
-		"annotations": [],
-		"lastPublishTime": "2026-06-09T11:07:03Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }
