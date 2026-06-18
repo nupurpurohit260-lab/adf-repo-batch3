@@ -12,7 +12,15 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_DL_Transformed",
+						"type": "DatasetReference"
+					},
+					"name": "sinkDL"
+				}
+			],
 			"transformations": [
 				{
 					"name": "pivot1"
@@ -31,7 +39,14 @@
 				"     pivotBy(Product),",
 				"     Total_Amt_Purchased = Sales,",
 				"     columnNaming: '$N$V',",
-				"     lateral: true) ~> pivot1"
+				"     lateral: true) ~> pivot1",
+				"pivot1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkDL"
 			]
 		}
 	}
