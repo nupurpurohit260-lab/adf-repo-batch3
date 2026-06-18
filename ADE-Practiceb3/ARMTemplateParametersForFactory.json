@@ -5,8 +5,14 @@
 		"factoryName": {
 			"value": "ADE-Practiceb3"
 		},
+		"LS_AWS_S3_secretAccessKey": {
+			"value": ""
+		},
 		"LS_DL_accountKey": {
 			"value": ""
+		},
+		"LS_AWS_S3_properties_typeProperties_accessKeyId": {
+			"value": "AKIAZMHETFYSUEZGVLFA"
 		},
 		"LS_DL_properties_typeProperties_url": {
 			"value": "https://b3datalake15thmay.dfs.core.windows.net/"
