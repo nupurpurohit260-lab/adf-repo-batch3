@@ -5,11 +5,23 @@
 		"factoryName": {
 			"value": "ADE-Practiceb3"
 		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
 		"LS_AWS_S3_secretAccessKey": {
 			"value": ""
 		},
 		"LS_DL_accountKey": {
 			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "sqlserverdatabasejune.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "azure-SQL-DB-CI"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "adeazuresql"
 		},
 		"LS_AWS_S3_properties_typeProperties_accessKeyId": {
 			"value": "AKIAZMHETFYSUEZGVLFA"
